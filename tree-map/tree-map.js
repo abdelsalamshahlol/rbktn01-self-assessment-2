@@ -28,6 +28,8 @@
   *  root1.value // still 1
   */
 
+// This means you have to put the menthod outside
+// All objects inherit from class
 
 clear()
 var Tree = function(value) {
@@ -43,8 +45,19 @@ Tree.prototype.addChild = function(val) {
     //     console.log(this)
 }
 
-Tree.prototype.map = function(func) {// Traverse and create new tree 
+Tree.prototype.map = function(func) {
+    // Traverse and create new tree 
+    // Better using recursion
+    console.log(value)
+    var t = this;
+    //     t = func(t);
+    for (var i in t.children) {
+        console.log(t.children[i].value, func(value))
+        t.children[i] = func(t.children[i].value)
+    }
+    return t;
 }
+
 ;
 
 var root1 = new Tree(1);
@@ -57,3 +70,8 @@ var leaf4 = branch2.addChild(4);
 var leaf5 = branch2.addChild(5);
 var leaf6 = branch3.addChild(6);
 var leaf7 = branch3.addChild(7);
+var newTree = root1.map(function(value) {
+    return value * 2;
+})
+
+console.log(newTree)
