@@ -28,10 +28,32 @@
   *  root1.value // still 1
   */
 
+
+clear()
 var Tree = function(value) {
-  this.value = value;
-  this.children = [];
+    this.value = value;
+    this.children = [];
 };
 
+Tree.prototype.addChild = function(val) {
+    var child = new Tree(val);
+    this.children.push(child);
 
+    return child;
+    //     console.log(this)
+}
 
+Tree.prototype.map = function(func) {// Traverse and create new tree 
+}
+;
+
+var root1 = new Tree(1);
+console.log({
+    root1,
+})
+var branch2 = root1.addChild(2);
+var branch3 = root1.addChild(3);
+var leaf4 = branch2.addChild(4);
+var leaf5 = branch2.addChild(5);
+var leaf6 = branch3.addChild(6);
+var leaf7 = branch3.addChild(7);
